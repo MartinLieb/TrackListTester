@@ -1,25 +1,16 @@
+import java.time.Duration;
+
 public class Track {
 
     private String titel;
-    private int durationSeconds;
+    private Duration duration;
     private boolean bonusTrack;
-
-
-
     private String displayName;
 
-    public Track(String titel, int durationSeconds, boolean bonusTrack, String displayName) {
+    public Track(String titel, Duration duration, boolean bonusTrack, String displayName) {
         this.titel = titel;
-        this.durationSeconds = durationSeconds;
+        this.duration = duration;
         this.bonusTrack = bonusTrack;
-        this.displayName = displayName;
-    }
-
-    public String getDisplayName() {
-        return displayName;
-    }
-
-    public void setDisplayName(String displayName) {
         this.displayName = displayName;
     }
 
@@ -31,12 +22,12 @@ public class Track {
         this.titel = titel;
     }
 
-    public int getDurationSeconds() {
-        return durationSeconds;
+    public Duration getDuration() {
+        return duration;
     }
 
-    public void setDurationSeconds(int durationSeconds) {
-        this.durationSeconds = durationSeconds;
+    public void setDuration(Duration duration) {
+        this.duration = duration;
     }
 
     public boolean isBonusTrack() {
@@ -47,6 +38,12 @@ public class Track {
         this.bonusTrack = bonusTrack;
     }
 
+    public String getDisplayName() {
+        return displayName;
+    }
 
-
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
 }
+
