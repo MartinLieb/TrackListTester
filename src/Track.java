@@ -4,10 +4,23 @@ public class Track {
     private int durationSeconds;
     private boolean bonusTrack;
 
-    public Track(String titel, int durationSeconds, boolean bonusTrack) {
+
+
+    private String displayName;
+
+    public Track(String titel, int durationSeconds, boolean bonusTrack, String displayName) {
         this.titel = titel;
         this.durationSeconds = durationSeconds;
         this.bonusTrack = bonusTrack;
+        this.displayName = displayName;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
     }
 
     public String getTitel() {
