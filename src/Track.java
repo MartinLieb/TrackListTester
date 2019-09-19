@@ -2,24 +2,24 @@ import java.time.Duration;
 
 public class Track {
 
-    private String titel;
+    private String title;
     private Duration duration;
     private boolean bonusTrack;
     private String displayName;
 
-    public Track(String titel, Duration duration, boolean bonusTrack, String displayName) {
-        this.titel = titel;
+    public Track(String title, Duration duration, boolean bonusTrack, String displayName) {
+        this.title = title;
         this.duration = duration;
         this.bonusTrack = bonusTrack;
         this.displayName = displayName;
     }
 
-    public String getTitel() {
-        return titel;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTitel(String titel) {
-        this.titel = titel;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public Duration getDuration() {
