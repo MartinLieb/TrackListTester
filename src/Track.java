@@ -1,6 +1,6 @@
 import java.time.Duration;
 
-public class Track {
+public class Track{
 
     private String title;
     private Duration duration;
