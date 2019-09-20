@@ -33,9 +33,9 @@ class TestTrack {
     }
 
     @Test
-    void createTrack3() {
+    void testCreateEmptyAlbum() {
 
-        Album album = new Album("Under Production", LocalDate.of(2074,10,6), 0, "single");
+        Album album = new Album("Under Production", LocalDate.of(2074,10,6),  "single");
 
         assertEquals("Under Production", album.getAlbumTitle());
         assertEquals(LocalDate.of(2074,10,6), album.getLocalDate());
@@ -45,14 +45,25 @@ class TestTrack {
     }
 
     @Test
-    void createTrack4() {
+    void testCreateAlbum() {
 
-        Album album = new Album("Close to the Edge", LocalDate.of(1972,9,13), 2, "album");
+        Album album = new Album
+                ("Close to the Edge", LocalDate.of(1972,9,13),  "album");
+        album.addTrack(new Track("And You and I", Duration.ofMinutes(10).plusSeconds(8), false, "[PT10M8S]"));
+        album.addTrack(new Track("America",Duration.ofMinutes(4).plusSeconds(12), true, "[PT4M12S]"));
 
         assertEquals("Close to the Edge", album.getAlbumTitle());
         assertEquals(LocalDate.of(1972,9,13), album.getLocalDate());
         assertEquals(2, album.getTrackCount());
         assertEquals("album", album.getType());
+        assertEquals(Duration.ofMinutes(14).plusSeconds(20),album.getPlaytime());
+        assertEquals("Close to the Edge [1972-09-13, PT14M20S]\\n[1] And You and I [PT10M8S]\\n[2] America [PT4M12S]", album.toString());
+
+
+    }
+
+    @Test
+    void testCreatEmptyDiscography(){
 
     }
 

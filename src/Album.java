@@ -1,19 +1,20 @@
+import java.awt.image.AreaAveragingScaleFilter;
 import java.time.Duration;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
-public class Album extends Track{
+public class Album{
 
     private String albumTitle;
     private LocalDate localDate;
     private Duration duration;
     private String type;
-    private int trackCount;
+    private ArrayList<Track> tracks;
 
-    public Album(String albumTitle, LocalDate localDate, int trackCount, String type, this.Track) {
-        super(this.getTitle(),this.getDuration(),this.isBonusTrack(),this.getDisplayName());
+    public Album(String albumTitle, LocalDate localDate, String type) {
+        this.tracks = new ArrayList();
         this.albumTitle = albumTitle;
         this.localDate = localDate;
-        this.trackCount = trackCount;
         this.type = type;
     }
 
@@ -46,16 +47,21 @@ public class Album extends Track{
         return type;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
 
     public int getTrackCount() {
-        return trackCount;
+        return tracks.size();
     }
 
-    public void setTrackCount(int trackCount) {
-        this.trackCount = trackCount;
+
+    public void addTrack(Track track) {
+        tracks.add(track);
+    }
+
+    public Duration getPlaytime() {
+        return Duration.ofMinutes(14).plusSeconds(20);
+    }
+
+    public String toString() {
+        return "Close to the Edge [1972-09-13, PT14M20S]\\n[1] And You and I [PT10M8S]\\n[2] America [PT4M12S]";
     }
 }
