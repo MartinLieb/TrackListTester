@@ -10,24 +10,24 @@ class TestTrack {
     @Test
     void createTrack() {
 
-        Track track = new Track("And You and I", Duration.ofMinutes(10).plusSeconds(8), false, "[PT10M8S]");
+        Track track = new Track("And You and I", Duration.ofMinutes(10).plusSeconds(8), false, "And You and I [PT10M8S]");
 
         assertEquals("And You and I", track.getTitle());
         assertEquals(Duration.ofMinutes(10).plusSeconds(8), track.getDuration());
         assertFalse(track.isBonusTrack());
-        assertEquals("[PT10M8S]", track.getDisplayName());
+        assertEquals("And You and I [PT10M8S]", track.getDisplayName());
 
 
     }
     @Test
     void createTrack2() {
 
-        Track track = new Track("America",Duration.ofMinutes(4).plusSeconds(12), true, "[PT4M12S]");
+        Track track = new Track("America",Duration.ofMinutes(4).plusSeconds(12), true, "America [PT4M12S]");
 
         assertEquals("America", track.getTitle());
         assertEquals(Duration.ofMinutes(4).plusSeconds(12), track.getDuration());
         assertTrue(track.isBonusTrack());
-        assertEquals("[PT4M12S]", track.getDisplayName());
+        assertEquals("America [PT4M12S]", track.getDisplayName());
 
 
     }
@@ -41,6 +41,7 @@ class TestTrack {
         assertEquals(LocalDate.of(2074,10,6), album.getLocalDate());
         assertEquals(0, album.getTrackCount());
         assertEquals("single", album.getType());
+        assertEquals("Under Production [2074-10-06, PT0S]", album.toString());
 
     }
 
@@ -49,8 +50,8 @@ class TestTrack {
 
         Album album = new Album
                 ("Close to the Edge", LocalDate.of(1972,9,13),  "album");
-        album.addTrack(new Track("And You and I", Duration.ofMinutes(10).plusSeconds(8), false, "[PT10M8S]"));
-        album.addTrack(new Track("America",Duration.ofMinutes(4).plusSeconds(12), true, "[PT4M12S]"));
+        album.addTrack(new Track("And You and I", Duration.ofMinutes(10).plusSeconds(8), false, "And You and I [PT10M8S]"));
+        album.addTrack(new Track("America",Duration.ofMinutes(4).plusSeconds(12), true, "America [PT4M12S]"));
 
         assertEquals("Close to the Edge", album.getAlbumTitle());
         assertEquals(LocalDate.of(1972,9,13), album.getLocalDate());
@@ -64,6 +65,12 @@ class TestTrack {
 
     @Test
     void testCreatEmptyDiscography(){
+
+        //Discography discography = new Discography(artist:"Future Artist", albumCount: 2, displayName: "Future Artist\\n0 records");
+
+        //assertEquals("Future Artist", discography.getArtist());
+        //assertEquals(2, discography.getAlbumCount());
+        //assertEquals("Future Artist\\n0 records", discography.getDisplayName());
 
     }
 

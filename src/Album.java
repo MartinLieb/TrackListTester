@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Album{
 
     private String albumTitle;
-    private LocalDate localDate;
+    private LocalDate releaseDate;
     private Duration duration;
     private String type;
     private ArrayList<Track> tracks;
@@ -14,7 +14,7 @@ public class Album{
     public Album(String albumTitle, LocalDate localDate, String type) {
         this.tracks = new ArrayList();
         this.albumTitle = albumTitle;
-        this.localDate = localDate;
+        this.releaseDate = localDate;
         this.type = type;
     }
 
@@ -27,11 +27,11 @@ public class Album{
     }
 
     public LocalDate getLocalDate() {
-        return localDate;
+        return releaseDate;
     }
 
     public void setLocalDate(LocalDate localDate) {
-        this.localDate = localDate;
+        this.releaseDate = localDate;
     }
 
     public Duration getDuration() {
@@ -58,10 +58,21 @@ public class Album{
     }
 
     public Duration getPlaytime() {
-        return Duration.ofMinutes(14).plusSeconds(20);
+        Duration playtime = Duration.ofSeconds(0);
+        for (int i = 0; i < tracks.size(); i++) {
+            playtime = playtime.plus(tracks.get(i).getDuration());
+
+        }
+        return playtime;
     }
 
     public String toString() {
-        return "Close to the Edge [1972-09-13, PT14M20S]\\n[1] And You and I [PT10M8S]\\n[2] America [PT4M12S]";
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(albumTitle + " [" + releaseDate + ", " + getPlaytime().toString() + "]");
+        for (int i = 0; i < tracks.size(); i++) {
+            stringBuilder.append("\\n" + "["+ (i+1) +"] " + tracks.get(i).toString());
+        }
+        return stringBuilder.toString();
+
     }
 }
